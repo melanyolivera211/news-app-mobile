@@ -1,3 +1,80 @@
-<p>
-  user-form works!
-</p>
+<div class="user-form-container">
+	<h2>{{ user ? 'Edit User' : 'Create New User' }}</h2>
+	
+	<form [formGroup]="userForm" (ngSubmit)="onSubmitForm()" class="user-form">
+		<div class="form-row">
+			<div class="form-group">
+				<label for="name">Name <span *ngIf="isRequired('name')" class="required-asterisk">*</span></label>
+				<input 
+					type="text" 
+					id="name" 
+					formControlName="name" 
+					[class.error]="hasError('name', 'required') || hasError('name', 'minlength')"
+					placeholder="Enter user's name">
+				<div class="error-message" *ngIf="hasError('name', 'required')">
+					Name is required
+				</div>
+				<div class="error-message" *ngIf="hasError('name', 'minlength')">
+					Name must be at least 2 characters long
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="surname">Surname <span *ngIf="isRequired('surname')" class="required-asterisk">*</span></label>
+				<input 
+					type="text" 
+					id="surname" 
+					formControlName="surname" 
+					[class.error]="hasError('surname', 'required') || hasError('surname', 'minlength')"
+					placeholder="Enter user's surname">
+				<div class="error-message" *ngIf="hasError('surname', 'required')">
+					Surname is required
+				</div>
+				<div class="error-message" *ngIf="hasError('surname', 'minlength')">
+					Surname must be at least 2 characters long
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input 
+				type="email" 
+				id="email" 
+				formControlName="email"
+				placeholder="Enter user's email address">
+		</div>
+
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input 
+				type="password" 
+				id="password" 
+				formControlName="password"
+				[placeholder]="user ? 'Leave blank to keep current password' : 'Enter user password'">
+			<div class="help-text">
+				Leave password field blank to keep the current password
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="country">Country</label>
+			<select 
+				id="country" 
+				formControlName="country">
+				<option value="">Select a country</option>
+				<option *ngFor="let country of countries" [value]="country.id">
+					{{ country.value }}
+				</option>
+			</select>
+			<div class="error-message" *ngIf="hasError('country', 'required')">
+				Please select a country
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<button type="button" class="btn-secondary" (click)="onCancelForm()">Cancel</button>
+			<button type="submit" class="btn-primary">{{ user ? 'Update' : 'Create' }} User</button>
+		</div>
+	</form>
+</div>
