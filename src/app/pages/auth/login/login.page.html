@@ -1,3 +1,6 @@
+<app-loader></app-loader>
+<app-toast></app-toast>
+
 <div class="login-page">
 	<div class="login-container">
 		<div class="login-header">
@@ -7,40 +10,25 @@
 
 		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
 			<div class="form-group">
-				<label for="email">Email Address</label>
-				<input 
-					type="email" 
-					id="email" 
-					formControlName="email" 
-					[class.error]="hasError('email', 'required') || hasError('email', 'email')"
-					placeholder="Enter your email address">
-				<div class="error-message" *ngIf="hasError('email', 'required')">
-					Email is required
-				</div>
-				<div class="error-message" *ngIf="hasError('email', 'email')">
-					Please enter a valid email address
-				</div>
+
+				<app-input id="email" formControlName="email" type="email" label="Email Address"
+					placeholder="Enter your email address" [required]="true" [minLength]="3"
+					errorMessage="Please enter a valid email address">
+				</app-input>
+
 			</div>
 
 			<div class="form-group">
-				<label for="password">Password</label>
+
 				<div class="password-input-container">
-					<input 
-						[type]="showPassword ? 'text' : 'password'" 
-						id="password" 
-						formControlName="password" 
-						[class.error]="hasError('password', 'required') || hasError('password', 'minlength')"
-						placeholder="Enter your password">
-					<button 
-						type="button" 
-						class="toggle-password"
-						(click)="togglePasswordVisibility()">
-						{{ showPassword ? 'Hide' : 'Show' }}
-					</button>
+					<app-input id="password" formControlName="password" type="password" label="Password"
+						placeholder="Enter your password" [required]="true" [minLength]="3"
+						errorMessage="Please enter a valid password">
+					</app-input>
 				</div>
 			</div>
 
-			<button type="submit" class="btn-primary login-button">Sign In</button>
+			<app-button type="submit">Sign In</app-button>
 		</form>
 
 		<div class="login-footer">

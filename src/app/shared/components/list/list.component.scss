@@ -1,0 +1,18 @@
+// list.component.scss
+ion-list {
+	padding: 0;
+
+	ion-item {
+		--padding-start: 16px;
+		--padding-end: 16px;
+		--min-height: 56px;
+
+		ion-label {
+			font-weight: 500;
+		}
+
+		&:hover {
+			--background: rgba(211, 47, 47, 0.1);
+		}
+	}
+}

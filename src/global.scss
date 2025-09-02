@@ -35,3 +35,13 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.news-modal {
+  --height: 80%;
+  --border-radius: 16px;
+
+  .modal-wrapper {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+}

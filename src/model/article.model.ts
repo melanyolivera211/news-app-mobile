@@ -1,14 +1,12 @@
 import { Source } from './source.model';
 
 export interface Article {
-
-	source: Source,
-	author: string | null,
-	title: string,
-	description: string,
-	url: string,
-	urlToImage: string,
-	publishedAt: string,
-	content: string
-
+  source: Source;
+  author: string | null;
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  content: string;
 }

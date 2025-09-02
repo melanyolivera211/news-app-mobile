@@ -1,3 +1,23 @@
-<p>
-  side-bar works!
-</p>
+<ion-menu [contentId]="'main-content'" [disabled]="!isOpen" type="overlay" side="start" [swipeGesture]="false">
+	<ion-header>
+		<ion-toolbar color="primary">
+			<ion-title>Categorías</ion-title>
+			<ion-buttons slot="end">
+				<ion-button (click)="onClose()">
+					<ion-icon slot="icon-only" name="close"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content>
+		<app-list [categories]="categories" (categorySelected)="onCategorySelected($event)"></app-list>
+	</ion-content>
+	<ion-footer>
+		<ion-toolbar class="logout-toolbar">
+			<ion-button expand="block" color="danger" (click)="onLogout()" class="logout-button">
+				<ion-icon slot="start" name="log-out"></ion-icon>
+				LOG OUT
+			</ion-button>
+		</ion-toolbar>
+	</ion-footer>
+</ion-menu>

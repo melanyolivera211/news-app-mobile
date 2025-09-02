@@ -5,10 +5,7 @@ import { LoginPage } from './login.page';
 import { SharedModule } from '@shared/shared-module';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    LoginPageRoutingModule
-  ],
-  declarations: [LoginPage]
+  imports: [SharedModule, LoginPageRoutingModule],
+  declarations: [LoginPage],
 })
 export class LoginPageModule {}

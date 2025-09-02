@@ -1,0 +1,42 @@
+.app-link {
+	text-decoration: none;
+	color: var(--ion-color-primary);
+	cursor: pointer;
+	transition: color 0.3s ease;
+
+	&:hover {
+		color: var(--ion-color-primary-shade);
+		text-decoration: underline;
+	}
+
+	&.disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	&.button-style {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 8px 16px;
+		border-radius: 8px;
+		font-weight: 500;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+// Estilos para modo oscuro
+@media (prefers-color-scheme: dark) {
+	.app-link {
+		color: var(--ion-color-primary-tint);
+
+		&:hover {
+			color: var(--ion-color-primary);
+		}
+	}
+}

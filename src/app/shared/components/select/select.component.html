@@ -1,3 +1,41 @@
-<p>
-  select works!
-</p>
+<div class="custom-select-container" [class.has-error]="hasError">
+	@if (label) {
+	<ion-label class="select-label" [color]="hasError ? 'danger' : ''">
+		{{ label }}
+		@if (required) {
+		<span class="required-asterisk">*</span>
+		}
+	</ion-label>
+	}
+
+	<ion-select [multiple]="multiple" [placeholder]="placeholder" [interface]="interface" [disabled]="disabled"
+		[compareWith]="compareWith" (ionChange)="onSelectionChange($event)" (ionCancel)="onCancelEvent($event)"
+		(ionDismiss)="onDismissEvent($event)" class="custom-select" [value]="value">
+
+		@for (element of options; track trackByFn($index, element)) {
+		<ion-select-option [value]="element.id">
+			{{ element.value }}
+		</ion-select-option>
+		}
+	</ion-select>
+
+	@if (icon) {
+	<ion-icon class="select-icon" [name]="icon"></ion-icon>
+	}
+
+	@if (hasError && errorMessage) {
+	<ion-note class="error-message" color="danger">
+		<ion-icon name="alert-circle"></ion-icon>
+		{{ errorMessage }}
+	</ion-note>
+	}
+
+	@if (multiple && value && value.length > 0) {
+	<div class="selected-items">
+		<ion-chip *ngFor="let item of getSelectedItems()" color="primary">
+			<ion-label>{{ item.value }}</ion-label>
+			<ion-icon name="close-circle" (click)="deselectItem(item)"></ion-icon>
+		</ion-chip>
+	</div>
+	}
+</div>

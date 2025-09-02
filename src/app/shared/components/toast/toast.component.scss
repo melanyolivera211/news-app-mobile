@@ -70,7 +70,7 @@
     width: 100%;
     height: 4px;
     background-color: rgba(0, 0, 0, 0.1);
-    
+
     .toast-progress {
       height: 100%;
       width: 100%;
@@ -82,7 +82,7 @@
   // Toast type variations
   &.toast-error {
     border-left: 4px solid #e74c3c;
-    
+
     .toast-progress {
       background-color: #e74c3c;
     }
@@ -90,7 +90,7 @@
 
   &.toast-info {
     border-left: 4px solid #3498db;
-    
+
     .toast-progress {
       background-color: #3498db;
     }
@@ -98,7 +98,7 @@
 
   &.toast-confirmation {
     border-left: 4px solid #2ecc71;
-    
+
     .toast-progress {
       background-color: #2ecc71;
     }
@@ -110,6 +110,7 @@
   from {
     transform: scaleX(1);
   }
+
   to {
     transform: scaleX(0);
   }

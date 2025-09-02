@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Article } from '@models/article.model';
+import { ModalComponent } from '@shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  standalone: false
+  standalone: false,
 })
-export class CardComponent  implements OnInit {
+export class CardComponent {
+  @Input() article!: Article;
+  @Output() cardClick = new EventEmitter<Article>();
 
-  constructor() { }
+  constructor(private modalController: ModalController) {}
 
-  ngOnInit() {}
+  public async openModal() {
+    const modal = await this.modalController.create({
+      component: ModalComponent,
+      componentProps: {
+        article: this.article,
+      },
+      cssClass: 'news-modal',
+    });
 
+    await modal.present();
+    this.cardClick.emit(this.article);
+  }
 }

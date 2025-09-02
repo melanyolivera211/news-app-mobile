@@ -1,0 +1,149 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 1rem 2rem;
+	z-index: 1000;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: all 0.3s ease;
+
+	&.scrolled {
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+		.logo {
+			color: #333;
+
+			svg {
+				color: #4f46e5;
+			}
+		}
+
+		.user-name,
+		.user-country {
+			color: #333;
+		}
+
+		.user-avatar {
+			background: linear-gradient(135deg, #4f46e5, #7c3aed);
+		}
+
+		.login-btn {
+			background: #4f46e5;
+			color: white;
+		}
+	}
+}
+
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	color: white;
+	font-weight: 700;
+	font-size: 1.25rem;
+	transition: color 0.3s ease;
+
+	svg {
+		color: white;
+		transition: color 0.3s ease;
+	}
+}
+
+.user-info {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.user-avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #60a5fa, #3b82f6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: 600;
+	font-size: 0.875rem;
+}
+
+.user-details {
+	display: flex;
+	flex-direction: column;
+}
+
+.user-name {
+	font-weight: 600;
+	color: white;
+	font-size: 0.875rem;
+	transition: color 0.3s ease;
+}
+
+.user-country {
+	font-size: 0.75rem;
+	color: rgba(255, 255, 255, 0.8);
+	transition: color 0.3s ease;
+}
+
+.no-user {
+	display: flex;
+	align-items: center;
+}
+
+.login-btn {
+	padding: 0.5rem 1.25rem;
+	border-radius: 6px;
+	border: none;
+	background: rgba(255, 255, 255, 0.2);
+	color: white;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.3);
+	}
+}
+
+// Responsive
+@media (max-width: 768px) {
+	.header {
+		padding: 1rem;
+	}
+
+	.user-details {
+		display: none;
+	}
+}
+
+.menu-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: white;
+	padding: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	// En estado scrolled
+	.header.scrolled & {
+		color: #333;
+	}
+}

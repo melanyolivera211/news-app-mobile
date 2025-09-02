@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  standalone: false
+  standalone: false,
 })
-export class ListComponent  implements OnInit {
+export class ListComponent {
+  @Input() categories: string[] = [];
+  @Output() categorySelected = new EventEmitter<string>();
 
-  constructor() { }
+  public selectCategory(category: string) {
+    this.categorySelected.emit(category);
+  }
 
-  ngOnInit() {}
+  public getCategoryIcon(category: string): string {
+    const categoryIcons: { [key: string]: string } = {
+      business: 'business',
+      entertainment: 'film',
+      general: 'newspaper',
+      health: 'medkit',
+      science: 'flask',
+      sports: 'basketball',
+      technology: 'hardware-chip',
+    };
 
+    return categoryIcons[category.toLowerCase()] || 'help';
+  }
 }

@@ -5,10 +5,7 @@ import { RegisterPage } from './register.page';
 import { SharedModule } from '@shared/shared-module';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    RegisterPageRoutingModule
-  ],
-  declarations: [RegisterPage]
+  imports: [SharedModule, RegisterPageRoutingModule],
+  declarations: [RegisterPage],
 })
 export class RegisterPageModule {}

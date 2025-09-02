@@ -1,3 +1,57 @@
-<p>
-  modal works!
-</p>
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-title>Details</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="dismiss()">
+				<ion-icon slot="icon-only" name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="modal-content">
+	<div class="modal-image-container">
+		<ion-img [src]="article.urlToImage || 'assets/images/news-placeholder.jpg'" [alt]="article.title"
+			class="modal-image">
+		</ion-img>
+	</div>
+
+	<div class="modal-body">
+		<h1 class="modal-title">{{ article.title }}</h1>
+
+		<div class="modal-meta">
+			<ion-chip color="primary" *ngIf="article.source.name">
+				<ion-label>{{ article.source.name }}</ion-label>
+			</ion-chip>
+
+			<ion-chip color="secondary" *ngIf="article.author">
+				<ion-icon name="person" color="primary"></ion-icon>
+				<ion-label>{{ article.author }}</ion-label>
+			</ion-chip>
+
+			<ion-chip>
+				<ion-icon name="calendar" color="primary"></ion-icon>
+				<ion-label>{{ article.publishedAt | date: 'fullDate' }}</ion-label>
+			</ion-chip>
+		</div>
+
+		<div class="modal-description">
+			<h3>Description</h3>
+			<p>{{ article.description }}</p>
+		</div>
+
+		<div class="modal-content-text" *ngIf="article.content">
+			<h3>Content</h3>
+			<p>{{ article.content }}</p>
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<ion-button expand="block" color="primary" (click)="openInBrowser()" class="browser-button">
+			<ion-icon name="open" slot="start"></ion-icon>
+			Open on explorer
+		</ion-button>
+	</ion-toolbar>
+</ion-footer>

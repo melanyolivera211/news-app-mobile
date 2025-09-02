@@ -1,3 +1,27 @@
-<p>
-  header works!
-</p>
+<!-- header.component.html -->
+<ion-header class="header" [class.scrolled]="isScrolled">
+	<div class="header-container">
+
+		<ion-button class="menu-btn" fill="clear" (click)="toggleSidebar()">
+			<ion-icon slot="icon-only" name="menu"></ion-icon>
+		</ion-button>
+
+		@if (user) {
+		<div class="user-info">
+			<div class="user-avatar">
+				{{ user.name.charAt(0) }}{{ user.surname.charAt(0) }}
+			</div>
+			<div class="user-details">
+				<span class="user-name">{{ user.name }} {{ user.surname }}</span>
+				<span class="user-country">{{ user.country.value }}</span>
+			</div>
+		</div>
+		} @else {
+		<div class="no-user">
+			<ion-button class="login-btn">Iniciar sesión</ion-button>
+		</div>
+		}
+	</div>
+</ion-header>
+
+<app-side-bar [isOpen]="sidebarOpen" (close)="sidebarOpen = false" (logout)="onLogout()"></app-side-bar>

@@ -24,53 +24,48 @@ import { Loader } from './services/loader/loader';
 import { Toast } from './services/toast/toast';
 
 @NgModule({
-	declarations: [
-	
-		LoaderComponent,
-		ToastComponent,
-		ButtonComponent,
-		CardComponent,
-		HeaderComponent,
-		InputComponent,
-		LinkComponent,
-		ListComponent,
-		ModalComponent,
-		PrincipalNewsComponent,
-		SelectComponent,
-		SideBarComponent,
-		UserFormComponent
-
-	],
-	imports: [
-
-		CommonModule,
-		FormsModule,
-		IonicModule.forRoot(),
-		ReactiveFormsModule,
-		RouterModule
-
-	], exports: [
-
-		CommonModule,
-		FormsModule,
-		IonicModule,
-		ReactiveFormsModule,
-		RouterModule,
-		LoaderComponent,
-		ToastComponent,
-		ButtonComponent,
-		CardComponent,
-		HeaderComponent,
-		InputComponent,
-		LinkComponent,
-		ListComponent,
-		ModalComponent,
-		PrincipalNewsComponent,
-		SelectComponent,
-		SideBarComponent,
-		UserFormComponent
-
-	], providers: [Loader, Toast]
-
+  declarations: [
+    LoaderComponent,
+    ToastComponent,
+    ButtonComponent,
+    CardComponent,
+    HeaderComponent,
+    InputComponent,
+    LinkComponent,
+    ListComponent,
+    ModalComponent,
+    PrincipalNewsComponent,
+    SelectComponent,
+    SideBarComponent,
+    UserFormComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule.forRoot(),
+    ReactiveFormsModule,
+    RouterModule,
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    ReactiveFormsModule,
+    RouterModule,
+    LoaderComponent,
+    ToastComponent,
+    ButtonComponent,
+    CardComponent,
+    HeaderComponent,
+    InputComponent,
+    LinkComponent,
+    ListComponent,
+    ModalComponent,
+    PrincipalNewsComponent,
+    SelectComponent,
+    SideBarComponent,
+    UserFormComponent,
+  ],
+  providers: [Loader, Toast],
 })
-export class SharedModule { }
+export class SharedModule {}

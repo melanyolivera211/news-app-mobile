@@ -1,3 +1,28 @@
-<p>
-  principal-news works!
-</p>
+<div class="principal-news" *ngIf="article">
+	<div class="news-hero">
+		<ion-img [src]="article.urlToImage" [alt]="article.title" class="hero-image">
+		</ion-img>
+
+		<div class="hero-overlay"></div>
+
+		<div class="hero-content">
+			<div class="news-badge">
+				<ion-chip color="primary">Main News</ion-chip>
+			</div>
+
+			<h1 class="hero-title">{{ article.title }}</h1>
+
+			<p class="hero-description">{{ article.description }}</p>
+
+			<div class="hero-meta">
+				<span class="source">{{ article.source.name }}</span>
+				<span class="date">{{ article.publishedAt | date: 'fullDate' }}</span>
+			</div>
+
+			<ion-button color="light" fill="solid" (click)="openModal()" class="read-more-btn">
+				Read the whole new
+				<ion-icon slot="end" name="arrow-forward"></ion-icon>
+			</ion-button>
+		</div>
+	</div>
+</div>

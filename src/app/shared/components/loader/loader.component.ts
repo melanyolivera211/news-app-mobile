@@ -6,14 +6,12 @@ import { Observable } from 'rxjs';
   selector: 'app-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
-  standalone: false
+  standalone: false,
 })
 export class LoaderComponent implements OnInit {
+  public isLoading$: Observable<boolean> = this.loadingService.isLoading$;
 
-	public isLoading$: Observable<boolean> = this.loadingService.isLoading$;
+  public constructor(private loadingService: Loader) {}
 
-	public constructor(private loadingService: Loader) {}
-
-	ngOnInit() {}
-
+  public ngOnInit() {}
 }

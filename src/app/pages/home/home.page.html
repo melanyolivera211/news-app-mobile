@@ -1,21 +1,24 @@
 <app-loader></app-loader>
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-toast></app-toast>
+
+<app-header></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+	@if (news){
+
+	<app-principal-news [article]="main"></app-principal-news>
+
+	@for (article of news.articles; track article.title){
+
+	<div class="news-grid">
+
+		<app-card [article]="article"></app-card>
+
+	</div>
+
+	}
+
+	}
+
 </ion-content>

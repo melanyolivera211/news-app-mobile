@@ -1,4 +1,5 @@
 <app-loader></app-loader>
+<app-toast></app-toast>
 
 <div class="register-page">
 	<div class="register-container">
@@ -8,10 +9,7 @@
 		</div>
 
 		<div class="register-content">
-			<app-user-form
-				[countries]="countries"
-				(onSubmit)="onUserSubmit($event)"
-				(onCancel)="onCancel()">
+			<app-user-form [countries]="countries" (onSubmit)="onUserSubmit($event)">
 			</app-user-form>
 			<div class="login-footer">
 				<p>Don't have an account? <a (click)="navigateToLogin()">Sign In</a></p>

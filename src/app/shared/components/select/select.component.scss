@@ -1,0 +1,98 @@
+.custom-select-container {
+	position: relative;
+	margin-bottom: 1.5rem;
+	width: 100%;
+
+	&.has-error {
+		.custom-select {
+			border-color: var(--ion-color-danger);
+			background: rgba(var(--ion-color-danger-rgb), 0.05);
+		}
+
+		.select-label {
+			color: var(--ion-color-danger);
+		}
+	}
+}
+
+.select-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 8px;
+	font-size: 14px;
+	color: var(--ion-color-dark);
+
+	.required-asterisk {
+		color: var(--ion-color-danger);
+		margin-left: 2px;
+	}
+}
+
+.custom-select {
+	--padding-start: 16px;
+	--padding-end: 16px;
+	--padding-top: 14px;
+	--padding-bottom: 14px;
+	background: var(--ion-color-light);
+	border-radius: 8px;
+	border: 2px solid var(--ion-color-light-shade);
+	width: 100%;
+	transition: all 0.3s ease;
+
+	&.ion-focused {
+		border-color: var(--ion-color-primary);
+		background: var(--ion-color-light);
+	}
+}
+
+.select-icon {
+	position: absolute;
+	right: 16px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--ion-color-medium);
+	z-index: 2;
+	pointer-events: none;
+}
+
+.error-message {
+	display: flex;
+	align-items: center;
+	margin-top: 6px;
+	font-size: 12px;
+	animation: fadeIn 0.3s ease;
+
+	ion-icon {
+		margin-right: 4px;
+		font-size: 14px;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-5px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Modo oscuro
+@media (prefers-color-scheme: dark) {
+	.select-label {
+		color: var(--ion-color-light);
+	}
+
+	.custom-select {
+		background: var(--ion-color-dark);
+		border-color: var(--ion-color-dark-shade);
+
+		&.ion-focused {
+			border-color: var(--ion-color-primary);
+			background: var(--ion-color-dark);
+		}
+	}
+}

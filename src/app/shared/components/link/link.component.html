@@ -1,3 +1,21 @@
-<p>
-  link works!
-</p>
+@if (getLinkType() === 'router') {
+<a [routerLink]="url === 'back' ? null : url" [queryParams]="queryParams" [fragment]="fragment" [target]="target"
+	[class.disabled]="disabled" (click)="handleClick($event)" class="app-link" [class.button-style]="button"
+	[class.ion-color]="button" [class.ion-color-primary]="button && color === 'primary'"
+	[class.ion-color-secondary]="button && color === 'secondary'"
+	[class.ion-color-success]="button && color === 'success'" [class.ion-color-warning]="button && color === 'warning'"
+	[class.ion-color-danger]="button && color === 'danger'" [class.ion-color-dark]="button && color === 'dark'"
+	[class.ion-color-medium]="button && color === 'medium'" [class.ion-color-light]="button && color === 'light'">
+	<ng-content></ng-content>
+</a>
+} @else {
+<a [href]="url === 'back' ? 'javascript:void(0)' : url" [target]="target" [class.disabled]="disabled"
+	(click)="handleClick($event)" class="app-link" [class.button-style]="button" [class.ion-color]="button"
+	[class.ion-color-primary]="button && color === 'primary'"
+	[class.ion-color-secondary]="button && color === 'secondary'"
+	[class.ion-color-success]="button && color === 'success'" [class.ion-color-warning]="button && color === 'warning'"
+	[class.ion-color-danger]="button && color === 'danger'" [class.ion-color-dark]="button && color === 'dark'"
+	[class.ion-color-medium]="button && color === 'medium'" [class.ion-color-light]="button && color === 'light'">
+	<ng-content></ng-content>
+</a>
+}

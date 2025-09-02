@@ -1,3 +1,11 @@
 export const environment = {
-  production: true
+  production: true,
+  newsapi: {
+
+	api_key: '87cf82ea69b74879955cc398e0837dfc',
+	baseUrl: 'https://newsapi.org'
+
+  }, countriesnow: {
+	  baseUrl: 'https://countriesnow.space'
+  }
 };
