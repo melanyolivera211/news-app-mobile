@@ -31,7 +31,9 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   public ngOnInit() {}
-
+  goToUserForm(): void {
+    this.router.navigate(['/user-form']);
+  }
   public toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }

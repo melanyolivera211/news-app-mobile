@@ -8,7 +8,7 @@
 
 		@if (user) {
 		<div class="user-info">
-			<div class="user-avatar">
+			<div class="user-avatar" (click)="goToUserForm()">
 				{{ user.name.charAt(0) }}{{ user.surname.charAt(0) }}
 			</div>
 			<div class="user-details">
