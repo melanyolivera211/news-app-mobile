@@ -13,6 +13,7 @@ import { User } from '@models/user.model';
 import { CountriesNow } from '@models/countries-now.model';
 import { Country, castCountryFromIso } from '@models/country.model';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -27,7 +28,8 @@ export class RegisterPage implements OnInit {
     private isoCountryService: IsoCountryService,
     private toastService: ToastService,
     private loaderService: LoaderService,
-    private router: Router
+    private router: Router,
+    
   ) {}
 
   public async ngOnInit(): Promise<void> {

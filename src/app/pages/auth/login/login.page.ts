@@ -8,6 +8,7 @@ import { User as UserService } from '@core/services/storage/user/user';
 
 import { Credential } from '@models/credential.model';
 import { User } from '@models/user.model';
+import { EncryptProvider } from '@core/services/storage/user/encrypt';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginPage implements OnInit {
     private loaderService: LoaderService,
     private toastService: ToastService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private encryptProvider: EncryptProvider 
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,33 +37,36 @@ export class LoginPage implements OnInit {
   public ngOnInit() {}
 
   public onSubmit(): void {
-    if (this.loginForm.valid) {
-      this.loaderService.show();
+  if (this.loginForm.valid) {
+    this.loaderService.show();
 
-      setTimeout(() => {
-        const formValue = this.loginForm.value;
-        const cred: Credential = {
-          email: formValue.email,
-          password: formValue.password,
-        };
+    setTimeout(() => {
+      const formValue = this.loginForm.value;
+      const cred: Credential = {
+        email: formValue.email,
+        password: formValue.password,
+      };
 
-        const user: User | null = this.userService.get();
+      const user: User | null = this.userService.get();
 
-        if (user) {
-          if (cred.email == user.email && cred.password == user.password) {
-            this.router.navigate(['/home']);
-          } else {
-            this.toastService.showError('Wrong Credentials');
-          }
+      if (user) {
+        const isEmailValid = cred.email === user.email;
+        const isPasswordValid = this.encryptProvider.compare(cred.password, user.password);
+
+        if (isEmailValid && isPasswordValid) {
+          this.router.navigate(['/home']);
+        } else {
+          this.toastService.showError('Wrong Credentials');
         }
+      }
 
-        this.loaderService.hide();
-      }, 1000);
-    } else {
-      this.markFormGroupTouched();
-      this.toastService.showError('Please fill all required fields correctly');
-    }
+      this.loaderService.hide();
+    }, 1000);
+  } else {
+    this.markFormGroupTouched();
+    this.toastService.showError('Please fill all required fields correctly');
   }
+}
 
   public navigateToRegister(): void {
     this.router.navigate(['/register']);

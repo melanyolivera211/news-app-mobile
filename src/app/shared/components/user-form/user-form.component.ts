@@ -10,6 +10,7 @@ import { User } from '@models/user.model';
 import { Country } from '@models/country.model';
 
 import { v4 as uuidv4 } from 'uuid';
+import { EncryptProvider } from '@core/services/storage/user/encrypt';
 
 @Component({
   selector: 'app-user-form',
@@ -27,7 +28,8 @@ export class UserFormComponent implements OnInit {
   public constructor(
     private fb: FormBuilder,
     private loaderService: LoaderService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private encryptProvider: EncryptProvider
   ) {
     this.userForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -65,12 +67,14 @@ export class UserFormComponent implements OnInit {
           return;
         }
 
+        const hashedPassword = this.encryptProvider.hash(formValue.password);
+
         const userData: User = {
           id: this.user?.id || uuidv4(),
           name: formValue.name,
           surname: formValue.surname,
           email: formValue.email,
-          password: formValue.password,
+          password: hashedPassword,
           country: selectedCountry,
         };
 
